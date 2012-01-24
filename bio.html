@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Craftman bio generator</title>
+	<link rel="stylesheet" type="text/css" href="css/bio.css">
+	<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.17.custom.css" rel="stylesheet" />	
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+
+	<!-- Source files -->
+	<script type="text/javascript" src="src/inherit.js"></script>
+	<script type="text/javascript" src="src/PhraseValidator.js"></script>
+	<script type="text/javascript" src="src/bioGrammar.js"></script>
+	<script type="text/javascript" src="src/Rewriter.js"></script>
+	<script type="text/javascript" src="src/parser.js"></script>
+	<script type="text/javascript" src="src/token.js"></script>
+	
+	<script type="text/javascript">
+		
+		$(document).ready(function()
+		{
+			$("button").click(function()
+			{
+				GenerateBio();
+				event.preventDefault();
+			});
+			
+			GenerateBio();
+		});
+		
+		var rewriter = new Rewriter();
+		
+		var GenerateBio = function()
+		{
+			$("#bioText").text(rewriter.FullSubstitution("<bio>", bioGrammar));
+		};
+
+		
+	</script>
+<head>
+<body>
+	<p>Craftman bio generator</p>
+	<h3 id="bioText"></h3>
+	<button id="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover" role="button" aria-disabled="false"><span class="ui-button-text">Generate bio!</span></button>
+</body>
+</html>
+	
